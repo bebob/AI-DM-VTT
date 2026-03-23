@@ -1,0 +1,100 @@
+.inventory-panel {
+  font-size: var(--font-size-sm);
+}
+
+.inv__currency {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  padding: var(--space-1) 0;
+}
+
+.inv__coin {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+}
+
+.inv__coin--gp { color: var(--color-text-gold); }
+.inv__coin--sp { color: #c0c0c0; }
+.inv__coin--cp { color: #cd7f32; }
+
+.inv__empty {
+  text-align: center;
+  color: var(--color-text-dim);
+  padding: var(--space-4);
+  font-size: var(--font-size-xs);
+}
+
+.inv__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.inv__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-bg);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.inv__item:hover {
+  border-color: var(--color-border-light);
+  background: var(--color-bg-light);
+}
+
+.inv__item--equipped {
+  border-left: 2px solid var(--color-success);
+}
+
+.inv__item-icon {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  width: 24px;
+  text-align: center;
+}
+
+.inv__item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.inv__item-name {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inv__item-qty {
+  color: var(--color-text-dim);
+}
+
+.inv__item-charges {
+  font-size: 7px;
+  color: var(--color-magic);
+}
+
+.inv__item-badges {
+  display: flex;
+  gap: 2px;
+}
+
+.inv__badge {
+  font-size: 6px;
+  padding: 1px 3px;
+  border: 1px solid;
+  font-family: var(--font-pixel);
+}
+
+.inv__badge--equipped { color: var(--color-success); border-color: var(--color-success); }
+.inv__badge--attuned { color: var(--color-magic); border-color: var(--color-magic); }
+.inv__badge--homebrew { color: var(--color-meta); border-color: var(--color-meta); }

@@ -1,0 +1,59 @@
+:root {
+  /* ── NES / SNES inspired palette ── */
+  --color-bg-dark: #0f0f1b;
+  --color-bg: #1a1a2e;
+  --color-bg-light: #16213e;
+  --color-bg-panel: #0a0a18;
+
+  --color-border: #4a4a6a;
+  --color-border-light: #6a6a8a;
+  --color-border-highlight: #e8d44d;
+
+  --color-text: #c8c8d8;
+  --color-text-dim: #7a7a9a;
+  --color-text-bright: #f0f0ff;
+  --color-text-gold: #e8d44d;
+  --color-text-narrative: #b8d8b8;
+
+  --color-hp-full: #4caf50;
+  --color-hp-mid: #ff9800;
+  --color-hp-low: #f44336;
+  --color-hp-bg: #2a2a3a;
+
+  --color-action: #4a90d9;
+  --color-action-hover: #5aa0e9;
+  --color-danger: #d94a4a;
+  --color-success: #4ad94a;
+  --color-magic: #9a4ad9;
+  --color-meta: #d9a04a;
+
+  /* ── Dice colors ── */
+  --color-crit: #ffd700;
+  --color-fumble: #ff4444;
+  --color-roll: #66bbff;
+
+  /* ── Typography ── */
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-mono: 'Courier New', monospace;
+
+  --font-size-xs: 8px;
+  --font-size-sm: 10px;
+  --font-size-base: 12px;
+  --font-size-lg: 14px;
+  --font-size-xl: 16px;
+  --font-size-xxl: 20px;
+
+  /* ── Spacing (multiples of 4 — pixel grid) ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ── Borders ── */
+  --border-width: 2px;
+  --border-panel: var(--border-width) solid var(--color-border);
+  --border-highlight: var(--border-width) solid var(--color-border-highlight);
+}

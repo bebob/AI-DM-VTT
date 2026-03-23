@@ -1,0 +1,27 @@
+.game-screen {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  height: 100vh;
+  gap: 2px;
+  background: var(--color-bg-dark);
+  padding: 2px;
+}
+
+.game-screen__main {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.game-screen__sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 2px;
+}
+
+.game-screen__sidebar-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}

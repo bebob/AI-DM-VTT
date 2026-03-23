@@ -1,0 +1,31 @@
+.sidebar-tabs {
+  display: flex;
+  gap: 0;
+}
+
+.sidebar-tabs__tab {
+  flex: 1;
+  padding: var(--space-2) var(--space-1);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--color-bg);
+  border: var(--border-panel);
+  border-bottom: none;
+  color: var(--color-text-dim);
+  transition: all 0.1s;
+}
+
+.sidebar-tabs__tab:hover {
+  color: var(--color-text);
+  background: var(--color-bg-light);
+}
+
+.sidebar-tabs__tab--active {
+  color: var(--color-text-gold);
+  background: var(--color-bg-panel);
+  border-color: var(--color-border-highlight);
+  border-bottom: 2px solid var(--color-bg-panel);
+  position: relative;
+  z-index: 1;
+}

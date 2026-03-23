@@ -1,0 +1,137 @@
+.character-sheet {
+  font-size: var(--font-size-sm);
+}
+
+.character-sheet__empty {
+  text-align: center;
+  color: var(--color-text-dim);
+  padding: var(--space-8) var(--space-4);
+  font-size: var(--font-size-xs);
+  line-height: 2.5;
+}
+
+.cs__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.cs__class {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cs__ac {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cs__ac .stat-value {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-bright);
+}
+
+/* ── Ability Scores ── */
+
+.cs__abilities {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-1);
+  margin: var(--space-3) 0;
+}
+
+.cs__ability {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-1);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+.cs__ability-name {
+  font-size: 7px;
+  color: var(--color-text-dim);
+  letter-spacing: 1px;
+}
+
+.cs__ability-score {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-bright);
+}
+
+.cs__ability-mod {
+  font-size: var(--font-size-xs);
+}
+
+.cs__save-prof {
+  font-size: 6px;
+  color: var(--color-success);
+  letter-spacing: 1px;
+}
+
+/* ── Skills ── */
+
+.cs__section-title {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-2);
+}
+
+.cs__skills {
+  margin-top: var(--space-2);
+}
+
+.cs__skill-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 1px 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+}
+
+.cs__skill-prof {
+  width: 14px;
+  text-align: center;
+  font-family: var(--font-pixel);
+}
+
+.cs__skill-prof--proficient { color: var(--color-success); }
+.cs__skill-prof--expertise { color: var(--color-text-gold); }
+
+.cs__skill-name {
+  flex: 1;
+  color: var(--color-text);
+}
+
+.cs__skill-mod {
+  width: 30px;
+  text-align: right;
+}
+
+/* ── Features ── */
+
+.cs__features {
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+}
+
+.cs__features li {
+  padding: 2px 0;
+}
+
+.cs__features li::before {
+  content: '> ';
+  color: var(--color-text-dim);
+}

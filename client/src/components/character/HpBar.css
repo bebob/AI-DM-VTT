@@ -1,0 +1,46 @@
+.hp-bar {
+  margin: var(--space-2) 0;
+}
+
+.hp-bar__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-1);
+}
+
+.hp-bar__numbers {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+}
+
+.hp-bar__sep {
+  color: var(--color-text-dim);
+  margin: 0 2px;
+}
+
+.hp-bar__temp {
+  color: var(--color-action);
+  margin-left: var(--space-1);
+  font-size: var(--font-size-xs);
+}
+
+.hp-bar__track {
+  height: 8px;
+  background: var(--color-hp-bg);
+  border: 1px solid var(--color-border);
+  display: flex;
+  overflow: hidden;
+}
+
+.hp-bar__fill {
+  height: 100%;
+  transition: width 0.3s, background-color 0.3s;
+  image-rendering: pixelated;
+}
+
+.hp-bar__temp-fill {
+  height: 100%;
+  background: var(--color-action);
+  opacity: 0.5;
+}

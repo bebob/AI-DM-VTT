@@ -1,0 +1,42 @@
+.player-input {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-2);
+}
+
+.player-input__mode-indicator {
+  padding-bottom: var(--space-1);
+}
+
+.player-input__mode {
+  font-size: 7px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 2px var(--space-2);
+}
+
+.player-input__mode--action { color: var(--color-action); }
+.player-input__mode--speech { color: var(--color-text-gold); }
+.player-input__mode--meta { color: var(--color-meta); }
+
+.player-input__row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-end;
+}
+
+.player-input__textarea {
+  flex: 1;
+  resize: none;
+  padding: var(--space-2);
+  min-height: 40px;
+  max-height: 120px;
+  line-height: 1.6;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+}
+
+.player-input__send {
+  height: 40px;
+  width: 60px;
+  font-size: var(--font-size-sm);
+}

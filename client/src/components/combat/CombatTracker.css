@@ -1,0 +1,76 @@
+.combat-tracker__inactive {
+  text-align: center;
+  color: var(--color-text-dim);
+  padding: var(--space-8) var(--space-4);
+  font-size: var(--font-size-xs);
+  line-height: 2.5;
+}
+
+.combat-tracker__hint {
+  font-size: 7px;
+  color: var(--color-text-dim);
+}
+
+.combat-tracker__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.combat-tracker__combatant {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  border-left: 3px solid transparent;
+}
+
+.combat-tracker__combatant--active {
+  border-left-color: var(--color-text-gold);
+  background: var(--color-bg-light);
+}
+
+.combat-tracker__combatant--player {
+  color: var(--color-text-bright);
+}
+
+.combat-tracker__init {
+  width: 20px;
+  text-align: right;
+  color: var(--color-text-dim);
+  font-family: var(--font-pixel);
+  font-size: 7px;
+}
+
+.combat-tracker__name {
+  flex: 1;
+}
+
+.combat-tracker__companion-tag {
+  color: var(--color-action);
+  font-size: 7px;
+}
+
+.combat-tracker__hp {
+  color: var(--color-hp-full);
+  font-size: 7px;
+  font-family: var(--font-pixel);
+}
+
+.combat-tracker__conditions {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.combat-tracker__condition {
+  font-size: 6px;
+  padding: 1px 3px;
+  background: rgba(217, 74, 74, 0.2);
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+  font-family: var(--font-pixel);
+}
