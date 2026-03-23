@@ -3,7 +3,7 @@ import { useGameStore } from '../../stores/gameStore';
 import { usePartyStore } from '../../stores/partyStore';
 import { useNarrativeStore, createNarrativeEntry } from '../../stores/narrativeStore';
 import { api } from '../../services/api';
-import type { Character } from '@ai-dm-vtt/shared';
+import type { Character, Suggestion } from '@ai-dm-vtt/shared';
 import './TitleScreen.css';
 
 // Sample character for demo purposes
@@ -53,6 +53,14 @@ export function TitleScreen() {
   const setCharacters = usePartyStore((s) => s.setCharacters);
   const setActiveCharacter = usePartyStore((s) => s.setActiveCharacter);
   const addEntry = useNarrativeStore((s) => s.addEntry);
+  const setSuggestions = useNarrativeStore((s) => s.setSuggestions);
+
+  const OPENING_SUGGESTIONS: Suggestion[] = [
+    { text: 'Investigate the glinting metal', rollRequired: 'Perception DC 12', dc: 12 },
+    { text: 'Scan the horizon for threats', rollRequired: 'Perception DC 13', dc: 13 },
+    { text: 'Press on toward the mountains' },
+    { text: 'Check your supplies', rollRequired: 'Survival DC 10', dc: 10 },
+  ];
 
   const handleNewCampaign = async () => {
     setIsLoading(true);
@@ -69,6 +77,7 @@ export function TitleScreen() {
         'Your canteen was half-empty. The sun pressed down like a physical weight. The mountains shimmered on the horizon, impossibly distant.\n\n' +
         'A hawk circled overhead, riding the thermals. Below it, something glinted in the sand — metal, catching the light. A hundred yards off the trail.',
       ));
+      setSuggestions(OPENING_SUGGESTIONS);
     } catch (err) {
       console.error('Failed to create campaign:', err);
       // Fall back to offline mode
@@ -92,6 +101,7 @@ export function TitleScreen() {
         'Your canteen was half-empty. The sun pressed down like a physical weight. The mountains shimmered on the horizon, impossibly distant.\n\n' +
         'A hawk circled overhead, riding the thermals. Below it, something glinted in the sand — metal, catching the light. A hundred yards off the trail.',
       ));
+      setSuggestions(OPENING_SUGGESTIONS);
     } finally {
       setIsLoading(false);
     }
@@ -116,9 +126,14 @@ export function TitleScreen() {
     addEntry(createNarrativeEntry('narrative',
       'Welcome, adventurer. This is a demo of the AI Dungeon Master Virtual Tabletop.\n\n' +
       'Try typing actions in the text box below. Roll dice with the panel on the right. Explore the character sheet and inventory tabs.\n\n' +
-      'The full AI narrator will bring this world to life in a future update.',
+      'The AI narrator is ready. Type an action or click a suggestion to begin.',
     ));
-    addEntry(createNarrativeEntry('suggestions', ''));
+    setSuggestions([
+      { text: 'Look around the tavern', rollRequired: 'Perception DC 12', dc: 12 },
+      { text: 'Talk to the barkeep' },
+      { text: 'Check the notice board', rollRequired: 'Investigation DC 10', dc: 10 },
+      { text: 'Draw your weapon' },
+    ]);
   };
 
   return (

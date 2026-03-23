@@ -1,5 +1,6 @@
 import type { Suggestion } from '@ai-dm-vtt/shared';
 import { useNarrativeStore, createNarrativeEntry } from '../../stores/narrativeStore';
+import { useNarrate } from '../../hooks/useNarrate';
 import './SuggestionsBar.css';
 
 interface SuggestionsBarProps {
@@ -8,19 +9,11 @@ interface SuggestionsBarProps {
 
 export function SuggestionsBar({ suggestions }: SuggestionsBarProps) {
   const addEntry = useNarrativeStore((s) => s.addEntry);
-  const setSuggestions = useNarrativeStore((s) => s.setSuggestions);
-  const setTyping = useNarrativeStore((s) => s.setTyping);
+  const narrate = useNarrate();
 
   const handleClick = (suggestion: Suggestion) => {
     addEntry(createNarrativeEntry('player-action', suggestion.text));
-    setSuggestions([]);
-    setTyping(true);
-    setTimeout(() => {
-      setTyping(false);
-      addEntry(createNarrativeEntry('narrative',
-        'The DM considers your action...\n\n(AI narrator integration coming soon.)'
-      ));
-    }, 1500);
+    narrate(suggestion.text, 'action');
   };
 
   return (

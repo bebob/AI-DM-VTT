@@ -1,5 +1,6 @@
 import { useState, useCallback, type KeyboardEvent } from 'react';
 import { useNarrativeStore, createNarrativeEntry } from '../../stores/narrativeStore';
+import { useNarrate } from '../../hooks/useNarrate';
 import type { InputMode } from '@ai-dm-vtt/shared';
 import './PlayerInput.css';
 
@@ -33,14 +34,14 @@ const MODE_HINTS: Record<InputMode, string> = {
 export function PlayerInput() {
   const [text, setText] = useState('');
   const addEntry = useNarrativeStore((s) => s.addEntry);
-  const setTyping = useNarrativeStore((s) => s.setTyping);
-  const setSuggestions = useNarrativeStore((s) => s.setSuggestions);
+  const isTyping = useNarrativeStore((s) => s.isTyping);
+  const narrate = useNarrate();
 
   const currentMode = text.trim() ? detectMode(text) : 'action';
 
   const handleSubmit = useCallback(() => {
     const trimmed = text.trim();
-    if (!trimmed) return;
+    if (!trimmed || isTyping) return;
 
     const mode = detectMode(trimmed);
     const clean = cleanInput(trimmed, mode);
@@ -48,23 +49,9 @@ export function PlayerInput() {
 
     addEntry(createNarrativeEntry(entryType, clean));
     setText('');
-    setSuggestions([]);
 
-    // Simulate DM typing (placeholder — will be replaced with AI integration)
-    setTyping(true);
-    setTimeout(() => {
-      setTyping(false);
-      addEntry(createNarrativeEntry('narrative',
-        'The DM considers your action...\n\n(AI narrator integration coming soon. For now, use the dice roller to make rolls!)'
-      ));
-      setSuggestions([
-        { text: 'Look around the room' },
-        { text: 'Talk to the stranger', rollRequired: 'Persuasion DC 14' },
-        { text: 'Draw your weapon' },
-        { text: 'Search for hidden passages', rollRequired: 'Investigation DC 12' },
-      ]);
-    }, 1500);
-  }, [text, addEntry, setTyping, setSuggestions]);
+    narrate(clean, mode);
+  }, [text, isTyping, addEntry, narrate]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -91,8 +78,13 @@ export function PlayerInput() {
           onKeyDown={handleKeyDown}
           placeholder={MODE_HINTS[currentMode]}
           rows={2}
+          disabled={isTyping}
         />
-        <button className="retro-btn retro-btn--primary player-input__send" onClick={handleSubmit}>
+        <button
+          className="retro-btn retro-btn--primary player-input__send"
+          onClick={handleSubmit}
+          disabled={isTyping}
+        >
           GO
         </button>
       </div>

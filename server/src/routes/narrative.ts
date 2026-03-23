@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { parseMechanicsBlocks } from '../services/mechanicsParser.js';
+import { narrate } from '../services/narrator.js';
 
 const router = Router();
 
@@ -41,6 +42,35 @@ router.post('/parse', (req, res) => {
     res.json({ narrative, mechanics, suggestions });
   } catch (err: any) {
     res.status(400).json({ error: err.message });
+  }
+});
+
+/**
+ * Generate a DM response to a player action.
+ * Calls the AI narrator (or uses fallback if no API key).
+ */
+router.post('/respond', async (req, res) => {
+  try {
+    const { playerAction, inputMode, character, recentHistory, campaignSetting, gameMode } = req.body;
+
+    if (!playerAction || !character) {
+      res.status(400).json({ error: 'Missing playerAction or character' });
+      return;
+    }
+
+    const result = await narrate({
+      playerAction,
+      inputMode: inputMode || 'action',
+      character,
+      recentHistory: recentHistory || [],
+      campaignSetting,
+      gameMode,
+    });
+
+    res.json(result);
+  } catch (err: any) {
+    console.error('Narrator error:', err.message);
+    res.status(500).json({ error: 'Narrator failed: ' + err.message });
   }
 });
 

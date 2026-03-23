@@ -44,6 +44,19 @@ export const api = {
       body: JSON.stringify({ text }),
     }),
 
+  narrateRespond: (data: {
+    playerAction: string;
+    inputMode: string;
+    character: any;
+    recentHistory: any[];
+    campaignSetting?: string;
+    gameMode?: string;
+  }) =>
+    request<{ narrative: string; mechanics?: any[]; suggestions?: any[] }>('/narrative/respond', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+
   // Health
   health: () => request<{ status: string; version: string }>('/health'),
 };
